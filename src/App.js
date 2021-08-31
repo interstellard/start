@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { store } from 'appRedux/store';
+import Home from 'pages/home';
+import Product from 'pages/product';
+import Search from 'pages/search';
 import './App.css';
+// Third party.
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ThemeProvider, createTheme, responsiveFontSizes } from '@material-ui/core/styles';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ['"Mulish"', 'sans-serif'].join(','),
+  },
+});
+const responsiveTheme = responsiveFontSizes(theme);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <ThemeProvider theme={responsiveTheme}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/product" component={Product} />
+            <Route path="/search" component={Search} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
