@@ -1,10 +1,18 @@
 // Third party.
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 function Home() {
   return (
-    <Box align="center">
-      <h1>Home Page</h1>
+    <Box 
+      height="100vh" 
+      display="flex" 
+      justifyContent="center" 
+      alignItems="center"
+    >
+      <Typography variant="h2" component="p">
+        Welcome to SimplyLab's onsite interview!
+      </Typography>
     </Box>
   );
 }
